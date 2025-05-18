@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高考倒计时</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <div class="container">
+        <h1>2026年高考倒计时</h1>
+        <div class="countdown" id="countdown" title="高考倒计时精确到毫秒">
+            <div class="time-section">
+                <span id="days">0</span>
+                <small>天</small>
+            </div>
+            <div class="time-section">
+                <span id="hours">0</span>
+                <small>小时</small>
+            </div>
+            <div class="time-section">
+                <span id="minutes">0</span>
+                <small>分钟</small>
+            </div>
+            <div class="time-section">
+                <span id="seconds">0</span>
+                <small>秒</small>
+            </div>
+            <div class="time-section">
+                <span id="milliseconds">0</span>
+                <small>毫秒</small>
+            </div>
+        </div>
+        <div class="motivation" id="motivation">加载中...</div>
+        <div class="tooltip">距高考还有 <span id="totalDays"></span> 天</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

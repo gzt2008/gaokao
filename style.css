@@ -1,0 +1,198 @@
+/* 基础重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'HarmonyOS Sans', sans-serif;
+}
+
+/* 自定义字体声明 */
+@font-face {
+    font-family: 'HarmonyOS Sans';
+    src: url('HarmonyOS_Sans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 根元素变量定义 */
+:root {
+    /* 渐变方向控制 */
+    --gradient-direction: to right;
+    --gradient-direction-alt: to left;
+    
+    /* 颜色节点 */
+    --color-stop-1: #667eea;
+    --color-stop-2: #7b5ba6;
+    --color-stop-3: #e07bcd;
+    --color-stop-4: #764ba2;
+    
+    /* 带宽参数 */
+    --color-stop-1-width: 0%;
+    --color-stop-2-width: 33%;
+    --color-stop-3-width: 66%;
+    --color-stop-4-width: 100%;
+    
+    /* 动画参数 */
+    --animation-duration: 2.5s;
+    --animation-timing: cubic-bezier(0.65, 0, 0.35, 1);
+    
+    /* 动画方向 */
+    --animation-direction: forwards;
+}
+
+/* 渐变背景 */
+body {
+    min-height: 100vh;
+    background: linear-gradient(var(--gradient-angle, 135deg),
+                #667eea 0%,
+                #7b5ba6 33%,
+                #e07bcd 66%,
+                #764ba2 100%);
+    background-size: 400% 400%; /* 增加背景尺寸以支持动画 */
+    animation: gradientAnimation 15s ease infinite; /* 添加动画 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #fff;
+}
+
+/* 容器样式 */
+.container {
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* 标题样式 */
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* 倒计时容器 */
+.countdown {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 30px 0;
+    z-index: 2; /* 确保倒计时在蒙版层上 */
+    position: relative;
+}
+
+/* 时间区块 */
+.time-section {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+.time-section:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* 数字样式 */
+.time-section span {
+    display: block;
+    font-size: 2.5em;
+    font-weight: bold;
+    line-height: 1.2;
+    animation: pop 0.3s ease-in-out;
+}
+
+/* 动画关键帧 */
+@keyframes pop {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* 渐变背景动画 */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+        --gradient-direction: to right;
+        --color-stop-1-width: 0%;
+        --color-stop-2-width: 33%;
+        --color-stop-3-width: 66%;
+        --color-stop-4-width: 100%;
+    }
+    50% {
+        background-position: 100% 50%;
+        --gradient-direction: to left;
+        --color-stop-1-width: 10%;
+        --color-stop-2-width: 43%;
+        --color-stop-3-width: 76%;
+        --color-stop-4-width: 110%;
+    }
+    100% {
+        background-position: 0% 50%;
+        --gradient-direction: to right;
+        --color-stop-1-width: 0%;
+        --color-stop-2-width: 33%;
+        --color-stop-3-width: 66%;
+        --color-stop-4-width: 100%;
+    }
+}
+
+/* 励志语句模块 */
+.motivation {
+    font-size: 1.2em;
+    margin: 20px 0;
+    min-height: 40px;
+    animation: fade 2s infinite;
+}
+
+@keyframes fade {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+/* 悬浮提示 */
+.tooltip {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 0.9em;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+/* 动画控制 */
+body:hover .main-container::before {
+    animation-play-state: paused;
+}
+
+.tooltip:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
+}
+
+/* 响应式布局 */
+@media (max-width: 600px) {
+    .time-section span {
+        font-size: 2em;
+    }
+    
+    .time-section {
+        min-width: 60px;
+    }
+    
+    .tooltip {
+        position: static;
+        margin: 15px auto;
+        display: inline-block;
+    }
+}
